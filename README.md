@@ -3,6 +3,9 @@
 A Thai syllable can be spoken in five different tones: mid, low, falling, high and rising.
 To determine the correct tone of a written syllable, you have to follow particular tone rules.
 
+(This tool follows the tone rules presented by Kris Willems on 
+http://womenlearnthai.com/index.php/finding-the-tone-of-a-thai-syllable/)
+
 ### What is this repository for? ###
 
 This tool will automatically return the correct tone for the input of any Thai syllable.
