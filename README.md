@@ -12,18 +12,13 @@ v 0.1
 
 ### How do I get set up? ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Just run
 
-### Contribution guidelines ###
+### Future work ###
 
-* Writing tests
-* Code review
-* Other guidelines
+* Determine tone of a single Thai syllable
+* Splitting Thai words into syllables
+
 
 ### Who do I talk to? ###
 
