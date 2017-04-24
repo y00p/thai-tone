@@ -19,6 +19,7 @@ v 0.1
 ### Future work ###
 
 * Determine tone of a single Thai syllable
+* Check if input is a formally correct Thai syllable
 * Splitting Thai words into syllables
 
 
