@@ -1,5 +1,5 @@
-import unicodedata as ucd
 from enum import IntEnum
+import csv
 
 def determine_tone( syllable, verbose = False ):
 
@@ -79,9 +79,9 @@ def determine_tone( syllable, verbose = False ):
             try:
                 tone = tone_marks[0:2].index(t) + 2
             except:
-                print( 'The combination of tone mark', t, \
-                        ' and a low consonant is invalid in Thai language.\n', \
-                        errmsg_notThai )
+                raise ValueError( 'The combination of tone mark', t, \
+                      ' and a low consonant is invalid in Thai language.\n', \
+                      errmsg_notThai )
         else:
             tone = tone_marks.index(t) + 1
     else:
@@ -100,16 +100,23 @@ def determine_tone( syllable, verbose = False ):
 
 # end of function determine_tone
 
-
 # input of syllable
-syllable = input("Please enter a Thai syllable: ")
-tone = determine_tone( syllable, True )
+#syllable = input("Please enter a Thai syllable: ")
+#tone = determine_tone( syllable, True )
 
 # printing the result
 tones        = [ 'mid', 'low', 'falling', 'high', 'rising' ]
 tone_symbols = [ '', '`', '^', '´', 'ˇ']
 
-print( '\nThe syllable is spoken in ' + tones[tone] + ' tone.' )
+# run test file
+reader = csv.reader( open( 'testData.txt' ) )
+
+for row in reader:
+    print( row[0], row[1], '==', tones[ determine_tone( row[0] ) ][0] )
+    if tones[ determine_tone( row[0] ) ][0] != row[1][1]:
+        print( "Error for test data: ", row[0] )
+
+#print( '\nThe syllable is spoken in ' + tones[tone] + ' tone.' )
 
 
 
