@@ -1,23 +1,20 @@
 import unicodedata as ucd
-from enum import Enum
+from enum import IntEnum
 
 def foundin( listA, listB ):
     return list(set( listA ).intersection( listB ))
 
-class ConsonantClass(Enum):
+class Class(IntEnum):
     HIGH = 0
     MID  = 1
     LOW  = 2
 
-class Tone(Enum):
+class Tone(IntEnum):
     MID     = 0
     LOW     = 1
     FALLING = 2
     HIGH    = 3
     RISING  = 4
-
-tones        = [ 'mid', 'low', 'falling', 'high', 'rising' ]
-tone_symbols = [ '', '`', '^', '´', 'ˇ']
 
 # input of syllable
 syllable = input("Please enter a Thai syllable: ")
@@ -52,13 +49,13 @@ found_tone_marks = foundin( tone_marks, syllable)
 # determine class of first consonant
 for c in syllable[0:2]:
     if c in low_consonants:
-        class_of_first_consonant = 'low'
+        class_of_first_consonant = Class.LOW
         break
     elif c in high_consonants:
-        class_of_first_consonant = 'high'
+        class_of_first_consonant = Class.HIGH
         break
     elif c in mid_consonants:
-        class_of_first_consonant = 'mid'
+        class_of_first_consonant = Class.MID
         break
 else:
     raise ValueError('The syllable might not be proper Thai' )
@@ -70,51 +67,58 @@ except:
     ValueError('The syllable might not be proper Thai' )
 
 
-print( 'The syllable ' + syllable )
-print( '* has tone mark:   ', found_tone_marks )
-print( '* is open:         ', not closed_bool )
-print( '* has short vowel: ', short_bool )
-print( '* first consonant class: ', class_of_first_consonant )
+#print( 'The syllable ' + syllable )
+#print( '* has tone mark:   ', found_tone_marks )
+#print( '* is open:         ', not closed_bool )
+#print( '* has short vowel: ', short_bool )
+#print( '* first consonant class: ', class_of_first_consonant )
 
 # is there a tone mark?
 # (There is never more than one tone mark per syllable)
 if len(found_tone_marks) > 0:
     t = found_tone_marks[0]
     # first consonant low class?
-    if class_of_first_consonant == 'low':
+    if class_of_first_consonant == Class.LOW:
         if t=='่':
-            print( 'falling' )
+            tone = Tone.FALLING
         elif t=='้':
-            print( 'high' )
+            tone = Tone.HIGH
         else:
             raise ValueError('The syllable might not be proper Thai' )
     else:
         if t=='่':
-            print( 'low' )
+            tone = Tone.LOW
         elif t=='้':
-            print( 'falling' )
+            tone = Tone.FALLING
         elif t=='๊':
-            print( 'high' )
+            tone = Tone.HIGH
         elif t=='๋':
-            print( 'rising' )
+            tone = Tone.RISING
         else:
             raise ValueError('The syllable might not be proper Thai' )
 else:
     # dead ( or alive )?
     if dead_bool:
-        if class_of_first_consonant == 'low':
+        if class_of_first_consonant == Class.LOW:
             if short_bool:
-                print('high')
+                tone = Tone.HIGH
             else:
-                print('falling')
+                tone = Tone.FALLING
         else:
-            print( 'low' )
+            tone = Tone.LOW
     else: #live
-        if class_of_first_consonant == 'high':
-            print( 'rising' )
+        if class_of_first_consonant == Class.HIGH:
+            tone = Tone.RISING
         else:
-            print( 'mid' )
+            tone = Tone.MID
 
 
-# check if syllable is thai language
+# printing the result
+tones        = [ 'mid', 'low', 'falling', 'high', 'rising' ]
+tone_symbols = [ '', '`', '^', '´', 'ˇ']
+
+print( '\nThe syllable is spoken in ' + tones[tone] + ' tone.' )
+
+
+# check if syllable is proper thai language
 # TODO
