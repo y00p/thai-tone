@@ -3,7 +3,8 @@ from thaianalysis import determine_tone
 
 ts.load()
 
-syllable = input("Please enter a Thai syllable (or just hit Enter): ")
+syllable = input("Please enter a Thai syllable "
+                 "(or just hit Enter for demo data): ")
 
 if syllable:
     # Process user input
@@ -16,7 +17,3 @@ else:
         if len(word_tone) == 1: # only monosyllabic words
             tone = determine_tone( word, verbose=False )
             print('{}: {}'.format(word, tone))
-
-
-
-

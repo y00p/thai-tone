@@ -14,4 +14,3 @@ class TestSDetermineTone(unittest.TestCase):
 if __name__ == '__main__':
     ts.load( test_cases = True )
     unittest.main()
-

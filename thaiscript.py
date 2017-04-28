@@ -20,7 +20,7 @@ vowel_locations          = []
 vowel_sounds             = []
 
 
-# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>> #
+# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
 # Load neccessary information about thai characters from files
 def load( basics = True, sound = False, test_cases = False ):
@@ -66,7 +66,7 @@ def load( basics = True, sound = False, test_cases = False ):
     file.close()
 
 
-# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>> #
+# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
 # Represents the tone in which a Thai syllable is spoken
 class Tone:
@@ -100,7 +100,7 @@ class Tone:
         return not self.__eq__(other)
 
 
-# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>> #
+# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
 
 # Represents the class of a Thai consonant
 class ConsonantClass(Tone):
@@ -113,11 +113,3 @@ class ConsonantClass(Tone):
             raise ValueError('Input \'{}\' cannot be interpreted as one of '
                              'the three Thai consonant classes: mid, low, '
                              'or high.'.format(tone) )
-
-
-
-
-
-
-
-
