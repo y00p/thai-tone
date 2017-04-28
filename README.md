@@ -15,13 +15,14 @@ v 0.1
 
 ### How do I get set up? ###
 
-* Just run
+* Run python3 ttdt.py and enter a Thai syllable or hit Enter for processing prepared cases
+* Run python2 tests.py for unittest of tone determination
 
 ### Future work ###
 
 * Decompose Thai syllable into its components
 * Check if input is a formally correct Thai syllable
-* Determine tone of a single Thai syllable
+* Determine tone of a single Thai syllable DONE
 * Splitting Thai words into syllables
 
 
