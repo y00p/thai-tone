@@ -3,13 +3,24 @@ from thaianalysis import determine_tone
 
 ts.load()
 
-syllable = input("Please enter a Thai syllable "
-                 "(or just hit Enter for demo data): ")
+inputstring = input("Please enter a Thai syllable, "
+                    "a text(separate syllables by using dashes [-]),"
+                    "(or just hit Enter for demo data): ")
 
-if syllable:
+if inputstring:
     # Process user input
-    tone = determine_tone( syllable, verbose=True )
-    print('\nThe syllable is spoken in {} tone.\n'.format(tone))
+    if '-' not in inputstring:
+        # single syllable
+        tone = determine_tone( inputstring, verbose=True )
+        print('\nThe syllable is spoken in {} tone.\n'.format(tone))
+    else:
+        # text (multi-syllable)
+        syllables = inputstring.replace(' ', '-').split('-');
+        print( inputstring )
+        for syllable in syllables:
+            tone = determine_tone( syllable, verbose=False )
+            print( '{}{}'.format( tone.symbol(), ' '*len(syllable) ), end='' )
+        print('')
 else:
     # Run demo data
     ts.load(basics=False, test_cases=True)

@@ -71,7 +71,7 @@ def load( basics = True, sound = False, test_cases = False ):
 # Represents the tone in which a Thai syllable is spoken
 class Tone:
 
-    tones = [ ('m', 'mid',     '',  '0', 0),
+    tones = [ ('m', 'mid',     ' ', '0', 0),
               ('l', 'low',     '`', '1', 1),
               ('f', 'falling', '^', '2', 2),
               ('h', 'high',    '´', '3', 3),
@@ -98,6 +98,12 @@ class Tone:
 
     def __ne__(self, other):
         return not self.__eq__(other)
+
+    def short(self):
+        return self.tone[0]
+
+    def symbol(self):
+        return self.tone[2]
 
 
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
