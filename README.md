@@ -9,7 +9,8 @@ http://womenlearnthai.com/index.php/finding-the-tone-of-a-thai-syllable/)
 
 ### What is this repository for? ###
 
-This tool will automatically return the correct tone for the input of any Thai syllable.
+This tool will automatically return the correct tone for the input of any Thai syllable
+or line of text with syllables separated by dashes [-].
 
 v 0.1
 
@@ -20,12 +21,12 @@ v 0.1
 
 ### Future work ###
 
-* Decompose Thai syllable into its components
-* Check if input is a formally correct Thai syllable
-* Determine tone of a single Thai syllable DONE
 * Splitting Thai words into syllables
+* ~~Decompose Thai syllable into its components (first and second consonant(cluster), vocal)~~
+* ~~Check if input is a formally correct Thai syllable~~
+* ~~Determine tone of a single Thai syllable~~
 
 
-### Who do I talk to? ###
+### Who can I talk to? ###
 
 julia@portl.space
