@@ -16,8 +16,8 @@ v 0.1
 
 ### How do I get set up? ###
 
-* Run python3 ttdt.py and enter a Thai syllable or hit Enter for processing prepared cases
-* Run python2 tests.py for unittest of tone determination
+* Run `python3 ttdt.py` and enter a Thai syllable, a line of text, or hit Enter for processing prepared cases
+* Run `python3 tests.py` for unittest of tone determination
 
 ### Future work ###
 
