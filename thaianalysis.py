@@ -10,6 +10,9 @@ def determine_tone( syllable, verbose = False ):
     # Replace the special character 'double r' (รร) by its equivalent 'a' (ั)
     syl = syl.replace('รร','ั')
 
+    # Remove repetition character
+    syl = syl.replace('ๆ','' );
+
     # Remove last consonant if silent (i.e. it has a ์ mark)
     if syl.endswith('์'):
         syl = syl[:-2]
