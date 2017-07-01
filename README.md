@@ -9,14 +9,14 @@ http://womenlearnthai.com/index.php/finding-the-tone-of-a-thai-syllable/)
 
 ### What is this repository for? ###
 
-This tool will automatically return the correct tone for the input of any Thai syllable
-or line of text with syllables separated by dashes [-].
+This tool will automatically return the correct tone for the input of any Thai syllable, a line of text with syllables separated by dashes [-], or a text file with thai syllables separated by dashes [-].
 
 v 0.1
 
 ### How do I get set up? ###
 
 * Run `python3 ttdt.py` and enter a Thai syllable, a line of text, or hit Enter for processing prepared cases
+* Run `python3 ttdt.py elephant_song.txt` or another file
 * Run `python3 tests.py` for unittest of tone determination
 
 ### Future work ###
