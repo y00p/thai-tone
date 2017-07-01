@@ -1,69 +1,55 @@
 import csv
 
-# order of the symbols is important!!
-# exceptions are 'shortener' and 'other_marks'
+class LetterProperties:
 
-shortener    = set('ะ็ัิุึฤ')
-tone_marks   = '่้๊๋'
-other_marks  = set('็์ฺ')
+    # order of the symbols is important!!
+    # exceptions are 'shortener' and 'other_marks'
 
-consonants               = ''
-consonant_classes        = ''
-consonant_plosives       = []
-consonant_initial_sounds = []
-consonant_final_sounds   = []
-consonant_words          = []
-consonant_words_tones    = []
+    shortener    = set('ะ็ัิุึฤ')
+    tone_marks   = '่้๊๋'
+    other_marks  = set('็์ฺ')
 
-vowels                   = []
-vowel_locations          = []
-vowel_sounds             = []
+    consonants               = ''
+    consonant_classes        = ''
+    consonant_plosives       = []
+    consonant_initial_sounds = []
+    consonant_final_sounds   = []
+    consonant_words          = []
+    consonant_words_tones    = []
 
+    vowels                   = []
+    vowel_locations          = []
+    vowel_sounds             = []
 
-# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
+    # Load neccessary information about thai characters from files
+    def load( self, basics = True, sound = False, test_cases = False ):
 
-# Load neccessary information about thai characters from files
-def load( basics = True, sound = False, test_cases = False ):
+        file = open( 'Alphabet.csv' )
+        reader = csv.reader( file )
+        next(reader) #skip header
+        for row in reader:
+            if basics:
+                self.consonants += row[0]
+                self.consonant_classes += row[3]
+                self.consonant_plosives.append(row[4] == '1')
+            if sound:
+                self.consonant_initial_sounds.append(row[1])
+                self.consonant_final_sounds.append(row[2])
+            if test_cases:
+                self.consonant_words.append(row[5])
+                self.consonant_words_tones.append(row[6])
+        file.close()
 
-    global consonants
-    global consonant_classes
-    global consonant_plosives
-    global consonant_initial_sounds
-    global consonant_final_sounds
-    global consonant_words
-    global consonant_words_tones
-
-    file = open( 'Alphabet.csv' )
-    reader = csv.reader( file )
-    next(reader) #skip header
-    for row in reader:
-        if basics:
-            consonants += row[0]
-            consonant_classes += row[3]
-            consonant_plosives.append(row[4] == '1')
-        if sound:
-            consonant_initial_sounds.append(row[1])
-            consonant_final_sounds.append(row[2])
-        if test_cases:
-            consonant_words.append(row[5])
-            consonant_words_tones.append(row[6])
-    file.close()
-
-
-    global vowels
-    global vowel_locations
-    global vowel_sounds
-
-    file = open('Vokale.csv')
-    reader = csv.reader( file )
-    next(reader) # skip header
-    for row in reader:
-        if basics:
-            vowels.append(row[0])
-            vowel_locations.append(row[2])
-        if sound:
-            vowel_sounds.append(row[1])
-    file.close()
+        file = open('Vokale.csv')
+        reader = csv.reader( file )
+        next(reader) # skip header
+        for row in reader:
+            if basics:
+                self.vowels.append(row[0])
+                self.vowel_locations.append(row[2])
+            if sound:
+                self.vowel_sounds.append(row[1])
+        file.close()
 
 
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
