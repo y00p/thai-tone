@@ -9,7 +9,7 @@ http://womenlearnthai.com/index.php/finding-the-tone-of-a-thai-syllable/)
 
 ### What is this repository for? ###
 
-This tool will automatically return the correct tone for the input of any Thai syllable, a line of text with syllables separated by dashes [-], or a text file with thai syllables separated by dashes [-].
+This tool will automatically return the correct tone for the input of any Thai syllable, a line of text with syllables separated by dashes [-], or a text file with thai syllables separated by dashes [-] such as [elephant_song.txt](https://github.com/y00p/thai-tone/blob/master/elephant_song.txt).
 
 v 0.1
 
