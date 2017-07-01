@@ -19,14 +19,14 @@ lp = thaiscript.LetterProperties()
 
 # PROCESS OF INPUT
 if len(lines)==1 and (not len([ i for i in '- \n' if i in lines[0] ])):
-    # single syllable
+    # single syllable (there is no delimiter found + one-liner)
     lp.load()
     ta = thaianalysis.ThaiAnalysis( lp )
     tone = ta.determine_tone( lines[0], verbose=True )
     print('\nThe syllable is spoken in {} tone.\n'.format(tone))
 
 elif len(lines):
-    # text (multi-syllable)
+    # text (multi-syllable, one or more lines)
     lp.load()
     ta = thaianalysis.ThaiAnalysis( lp )
     for line in lines:
@@ -44,7 +44,7 @@ elif len(lines):
         print('\n')
 
 else:
-    # Run demo data
+    # No input -> Run demo data
     lp.load(basics=True, test_cases=True)
     ta = thaianalysis.ThaiAnalysis( lp )
     for word, word_tone in zip(ts.consonant_words, ts.consonant_words_tones):
