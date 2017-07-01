@@ -18,20 +18,31 @@ else:
 lp = thaiscript.LetterProperties()
 
 # PROCESS OF INPUT
-if len(lines)==1 and (not len([ i for i in '- \n' if i in lines[0] ])):
+if not lines[0]: # no input will reslt in lines=[''],
+                 # so there is always one element
+    # No input -> Run demo data
+    lp.load(basics=True, test_cases=True)
+    ta = thaianalysis.ThaiAnalysis( lp )
+    for word, word_tone in zip(lp.consonant_words, lp.consonant_words_tones):
+        if len(word_tone) == 1: # only monosyllabic words
+            tone = ta.determine_tone( word, verbose=False )
+            print('{}: {}'.format(word, tone))
+
+elif ( len(lines)==1 and
+     (not len([ i for i in '- \n' if i in lines[0] ]))):
     # single syllable (there is no delimiter found + one-liner)
     lp.load()
     ta = thaianalysis.ThaiAnalysis( lp )
     tone = ta.determine_tone( lines[0], verbose=True )
     print('\nThe syllable is spoken in {} tone.\n'.format(tone))
 
-elif len(lines):
+else:
     # text (multi-syllable, one or more lines)
     lp.load()
     ta = thaianalysis.ThaiAnalysis( lp )
     for line in lines:
         syllables = line.replace(' ', '-').split('-');
-        print( line, end='' )
+        print( line.strip('\n') )
         for syllable in syllables:
             tone   = ta.determine_tone( syllable, verbose=False )
 
@@ -42,12 +53,3 @@ elif len(lines):
             # Print tone symbols, aligned with the script
             print( '{}{}'.format( tone.symbol(), ' '*length ), end='' )
         print('\n')
-
-else:
-    # No input -> Run demo data
-    lp.load(basics=True, test_cases=True)
-    ta = thaianalysis.ThaiAnalysis( lp )
-    for word, word_tone in zip(ts.consonant_words, ts.consonant_words_tones):
-        if len(word_tone) == 1: # only monosyllabic words
-            tone = ta.determine_tone( word, verbose=False )
-            print('{}: {}'.format(word, tone))
