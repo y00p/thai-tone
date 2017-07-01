@@ -5,6 +5,8 @@
 มี-เขี้ยว-ใต้-งวง-เรียก-ว่า-งา
 มี-หู-มี-ตา-หาง-ยาว
 
+# Pronounciation (english)
+#
 # Chang chang chang chang chang
 # nong koi hen chang reu plow
 # chang man dtua dtoh mai bao
@@ -12,6 +14,8 @@
 # mee kiaow dtai nguang riak wa ngar
 # mee hoo mee dtar harng yaao
 
+# Translation
+#
 # Elephant, elephant, elephant, elephant, elephant,
 # Have you ever seen an elephant or not?
 # The elephant, it is extremely big
