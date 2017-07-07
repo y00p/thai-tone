@@ -5,6 +5,26 @@ from csv import DictReader
 from collections import  defaultdict
 
 
+# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
+# Load thai script information
+# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
+
+def __columnwise_table( filename ):
+    result = defaultdict(list)
+    with open(filename,'rU') as f:
+        reader = DictReader(f)
+        for row in reader:
+            for col,dat in row.items():
+                result[col].append(dat)
+    return result
+
+
+def init():
+    consonants = __columnwise_table('Alphabet.csv')
+    vowels     = __columnwise_table('Vokale.csv')
+    return consonants, vowels
+
+
 # Load Thai letter information
 consonants, vowels = init()
 
@@ -115,26 +135,6 @@ def determine_tone( syllable, verbose = False ):
                 tone = Tone('mid')
 
     return tone
-
-
-# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
-# Load thai script information
-# <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
-
-def __columnwise_table( filename ):
-    result = defaultdict(list)
-    with open(filename,'rU') as f:
-        reader = DictReader(f)
-        for row in reader:
-            for col,dat in row.items():
-                result[col].append(dat)
-    return result
-
-
-def init():
-    consonants = __columnwise_table('Alphabet.csv')
-    vowels     = __columnwise_table('Vokale.csv')
-    return consonants, vowels
 
 
 # <<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>><<>>
